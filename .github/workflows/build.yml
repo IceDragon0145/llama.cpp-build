@@ -20,8 +20,5 @@ jobs:
         run: /bin/sh "$GITHUB_WORKSPACE/check.sh"
       - name: Build llama.cpp with Docker
         run: /bin/sh "$GITHUB_WORKSPACE/docker.sh"
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          path: build.tar.gz
-          name: llama-cpp-ubuntu${{ env.UBUNTU_VERSION }}-cu${{ env.CUDA_VERSION }}-x64.tar.gz
+      - name: Upload release
+        run: /bin/sh "$GITHUB_WORKSPACE/release.sh"

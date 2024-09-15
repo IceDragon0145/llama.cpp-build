@@ -10,6 +10,11 @@ if [ -z $LOCAL_REPO ] || [ -z $REMOTE_REPO ]; then
     exit 1
 fi
 
-LOCAL_TAG=`curl -fsSL "https://api.github.com/repos/$LOCAL_REPO/releases/latest" | jq -r '.tag_name'`
-REMOTE_TAG=`curl -fsSL "https://api.github.com/repos/$REMOTE_REPO/branches/master" | jq -r '.commit.sha'`
-! [ "$LOCAL_TAG" = "$REMOTE_TAG" ]
+LOCAL_TAG=`curl -fsSL "https://api.github.com/repos/$LOCAL_REPO/branches/master" | jq -r '.tag_name'`
+REMOTE_TAG=`curl -fsSL "https://api.github.com/repos/$REMOTE_REPO/branches/master" | jq -r '.tag_name'`
+if [ "$LOCAL_TAG" = "$REMOTE_TAG" ]; then
+    exit 1
+else
+    echo "{LLAMA_CPP_VERSION}={$REMOTE_TAG}" >> $GITHUB_ENV
+    exit
+fi
