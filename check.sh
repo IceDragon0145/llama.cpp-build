@@ -13,6 +13,7 @@ fi
 LOCAL_TAG=`curl -fsSL "https://api.github.com/repos/$LOCAL_REPO/branches/master" | jq -r '.tag_name'`
 REMOTE_TAG=`curl -fsSL "https://api.github.com/repos/$REMOTE_REPO/branches/master" | jq -r '.tag_name'`
 if [ "$LOCAL_TAG" = "$REMOTE_TAG" ]; then
+    echo "Error: No need to build. (LOCAL_TAG=$LOCAL_TAG, REMOTE_TAG=$REMOTE_TAG)" 1>&2
     exit 1
 else
     echo "{LLAMA_CPP_VERSION}={$REMOTE_TAG}" >> $GITHUB_ENV
