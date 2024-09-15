@@ -2,7 +2,7 @@ name: Build llama.cpp
 on:
   workflow_dispatch:
   schedule:
-    - cron:  '0 21 * * *'
+    - cron:  '0 0,12 * * *'
 env:
   LOCAL_REPO: "IceDragon0145/llama.cpp-build"
   REMOTE_REPO: "ggerganov/llama.cpp"
