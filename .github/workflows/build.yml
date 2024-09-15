@@ -1,7 +1,7 @@
 name: Get latest release version
 on:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron:  '0 15 * * *'
 env:
   LOCAL_REPO: "IceDragon0145/llama.cpp-build"
   REMOTE_REPO: "ggerganov/llama.cpp"
