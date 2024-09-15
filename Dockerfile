@@ -6,4 +6,4 @@ COPY build.sh /build.sh
 RUN chmod a+rx /build.sh
 RUN apt-get update
 RUN apt-get install -y build-essential libcurl4-openssl-dev git tar cmake
-CMD ["/build.sh"]
+CMD ["/bin/sh", "/build.sh"]
