@@ -2,6 +2,7 @@
 
 set -e
 
+LLAMA_CPP_VERSION=`cat version`
 docker build \
     -t llama-cpp-build \
     --no-cache \

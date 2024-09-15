@@ -16,6 +16,6 @@ if [ "$LOCAL_TAG" = "$REMOTE_TAG" ]; then
     echo "Error: No need to build. (LOCAL_TAG=$LOCAL_TAG, REMOTE_TAG=$REMOTE_TAG)" 1>&2
     exit 1
 else
-    echo "{LLAMA_CPP_VERSION}={$REMOTE_TAG}" >> $GITHUB_ENV
+    echo "$REMOTE_TAG" >> version
     exit
 fi
