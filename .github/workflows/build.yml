@@ -1,0 +1,24 @@
+name: Get latest release version
+on:
+  schedule:
+    - cron:  '0 0 * * *'
+env:
+  LOCAL_REPO: "IceDragon0145/llama.cpp-build"
+  REMOTE_REPO: "ggerganov/llama.cpp"
+jobs:
+  2204-cu122:
+    runs-on: ubuntu-latest
+    env:
+      UBUNTU_VERSION: 22.04
+      CUDA_VERSION: 12.2.0
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check for latest tag
+        run: /bin/sh "$GITHUB_WORKSPACE/check.sh"
+      - name: Build llama.cpp with Docker
+        run: /bin/sh "$GITHUB_WORKSPACE/docker.sh"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          path: build.tar.gz
+          name: llama-bin-ubuntu${{ env.UBUNTU_VERSION }}-cu${{ env.CUDA_VERSION }}-x64.tar.gz
