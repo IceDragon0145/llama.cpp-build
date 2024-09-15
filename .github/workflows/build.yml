@@ -21,4 +21,6 @@ jobs:
       - name: Build llama.cpp with Docker
         run: /bin/sh "$GITHUB_WORKSPACE/docker.sh"
       - name: Upload release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: /bin/sh "$GITHUB_WORKSPACE/release.sh"
