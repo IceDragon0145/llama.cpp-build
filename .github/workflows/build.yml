@@ -14,6 +14,8 @@ jobs:
       CUDA_VERSION: 12.2.0
     steps:
       - uses: actions/checkout@v4
+        with:
+          sparse-checkout: .
       - name: Check for latest tag
         run: /bin/sh "$GITHUB_WORKSPACE/check.sh"
       - name: Build llama.cpp with Docker
