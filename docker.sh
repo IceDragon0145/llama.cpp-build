@@ -8,5 +8,5 @@ docker build \
     --build-arg UBUNTU_VERSION=$UBUNTU_VERSION \
     --build-arg CUDA_VERSION=$CUDA_VERSION \
     .
-docker run -t llama-cpp-build --name llama-cpp-build-container
+docker run --name llama-cpp-build-container -t llama-cpp-build
 docker cp llama-cpp-build-container:/build.tar.gz .
