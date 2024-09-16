@@ -12,6 +12,7 @@ jobs:
     env:
       UBUNTU_VERSION: 22.04
       CUDA_VERSION: 12.2.0
+    permissions: write-all
     steps:
       - uses: actions/checkout@v4
         with:
